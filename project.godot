@@ -1,0 +1,139 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "GoapAction",
+"class": &"BuildFirepitAction",
+"language": &"GDScript",
+"path": "res://ai/goap/actions/build_firepit.gd"
+}, {
+"base": "GoapAction",
+"class": &"CalmDownAction",
+"language": &"GDScript",
+"path": "res://ai/goap/actions/calm_down.gd"
+}, {
+"base": "GoapGoal",
+"class": &"CalmDownGoal",
+"language": &"GDScript",
+"path": "res://ai/goap/goals/calm_down.gd"
+}, {
+"base": "GoapAction",
+"class": &"ChopTreeAction",
+"language": &"GDScript",
+"path": "res://ai/goap/actions/chop_tree.gd"
+}, {
+"base": "GoapAction",
+"class": &"FindCoverAction",
+"language": &"GDScript",
+"path": "res://ai/goap/actions/find_cover.gd"
+}, {
+"base": "GoapAction",
+"class": &"FindFoodAction",
+"language": &"GDScript",
+"path": "res://ai/goap/actions/find_food.gd"
+}, {
+"base": "Node",
+"class": &"GoapAction",
+"language": &"GDScript",
+"path": "res://ai/goap/action.gd"
+}, {
+"base": "Node",
+"class": &"GoapAgent",
+"language": &"GDScript",
+"path": "res://ai/goap/agent.gd"
+}, {
+"base": "Node",
+"class": &"GoapGoal",
+"language": &"GDScript",
+"path": "res://ai/goap/goal.gd"
+}, {
+"base": "Node",
+"class": &"GoapNode",
+"language": &"GDScript",
+"path": "res://ai/goap/node.gd"
+}, {
+"base": "Node",
+"class": &"GoapPlanner",
+"language": &"GDScript",
+"path": "res://ai/goap/planner.gd"
+}, {
+"base": "Node",
+"class": &"GoapWorldState",
+"language": &"GDScript",
+"path": "res://ai/goap/worldstate.gd"
+}, {
+"base": "GoapGoal",
+"class": &"KeepFedGoal",
+"language": &"GDScript",
+"path": "res://ai/goap/goals/keep_fed.gd"
+}, {
+"base": "GoapGoal",
+"class": &"KeepFirepitBurningGoal",
+"language": &"GDScript",
+"path": "res://ai/goap/goals/has_firepit.gd"
+}, {
+"base": "Area2D",
+"class": &"Projectile",
+"language": &"GDScript",
+"path": "res://entities/projectiles/projectile.gd"
+}, {
+"base": "GoapGoal",
+"class": &"RelaxGoal",
+"language": &"GDScript",
+"path": "res://ai/goap/goals/relax.gd"
+}, {
+"base": "Camera2D",
+"class": &"ShakeCamera",
+"language": &"GDScript",
+"path": "res://scripts/camera.gd"
+}, {
+"base": "Node2D",
+"class": &"Shooter",
+"language": &"GDScript",
+"path": "res://entities/shooter.gd"
+}, {
+"base": "Node",
+"class": &"State",
+"language": &"GDScript",
+"path": "res://entities/state.gd"
+}, {
+"base": "Node",
+"class": &"StateMachine",
+"language": &"GDScript",
+"path": "res://entities/state_machine.gd"
+}]
+_global_script_class_icons={
+"BuildFirepitAction": "",
+"CalmDownAction": "",
+"CalmDownGoal": "",
+"ChopTreeAction": "",
+"FindCoverAction": "",
+"FindFoodAction": "",
+"GoapAction": "",
+"GoapAgent": "",
+"GoapGoal": "",
+"GoapNode": "",
+"GoapPlanner": "",
+"GoapWorldState": "",
+"KeepFedGoal": "",
+"KeepFirepitBurningGoal": "",
+"Projectile": "",
+"RelaxGoal": "",
+"ShakeCamera": "",
+"Shooter": "",
+"State": "",
+"StateMachine": ""
+}
+
+[application]
+
+config/name="Constantinople"
+config/features=PackedStringArray("4.0", "Forward Plus")
+config/icon="res://icon.svg"

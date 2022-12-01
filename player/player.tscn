@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm7xk7rgrlkm4"]
+
+[ext_resource type="Texture2D" uid="uid://bu8lmj7uca5pd" path="res://assets/sprites/player/player.png" id="1_i5lul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8te5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxlov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yl2e1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gaxa5"]
+size = Vector2(4, 10)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_8te5k")
+
+[node name="Find_enemies" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+collision_layer = 8
+collision_mask = 8
+
+[node name="Find_enemies_collision" type="CollisionShape2D" parent="Find_enemies"]
+shape = SubResource("CircleShape2D_xxlov")
+
+[node name="Rotate" type="Node2D" parent="."]
+
+[node name="Jump_rotate" type="Node2D" parent="Rotate"]
+position = Vector2(0, -6)
+
+[node name="Player" type="Sprite2D" parent="Rotate/Jump_rotate"]
+position = Vector2(0, -2)
+texture = ExtResource("1_i5lul")
+
+[node name="Damage_box" type="Area2D" parent="Rotate/Jump_rotate"]
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="Damage_collision" type="CollisionShape2D" parent="Rotate/Jump_rotate/Damage_box"]
+shape = SubResource("CircleShape2D_yl2e1")
+disabled = true
+
+[node name="Wall_check_feet" type="RayCast2D" parent="Rotate"]
+target_position = Vector2(3, 0)
+
+[node name="Wall_check_head" type="RayCast2D" parent="Rotate"]
+position = Vector2(0, -10)
+target_position = Vector2(3, 0)
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="Hitbox_collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_gaxa5")

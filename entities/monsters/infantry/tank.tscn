@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://pynw56cwrp72"]
+
+[node name="tank" type="Node2D"]
