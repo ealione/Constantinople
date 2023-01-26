@@ -2,69 +2,159 @@ extends Node
 # Global helper class used to get information about game scenes.
 
 
-# Monsters
-const ZOMBY_T1 := "res://entities/monsters/infantry/zomby_t1.tscn"
-const ZOMBY_T2 := "res://entities/monsters/infantry/zomby_t2.tscn"
-const TANK := "res://entities/monsters/shooting/tanks/tank.tscn"
-const DEMON := "res://entities/monsters/shooting/demons/helicopter.tscn"
-# Humans
-const KNIGHT_T1 := "res://entities/humans/infantry/knight_t1.tscn"
-const KNIGHT_T2 := "res://entities/humans/infantry/knight_t2.tscn"
-const SPEARMAN := "res://entities/humans/infantry/spearman.tscn"
-const PEASANT := "res://entities/humans/infantry/peasant.tscn"
-const ARCHER := "res://entities/humans/archer/archer.tscn"
-const CAVALRY_KNIGHT := "res://entities/humans/cavalry/knight.tscn"
-const CAVALRY_HUSSAR := "res://entities/humans/cavalry/hussar.tscn"
+# Enemies
+#crusader troops
+const KNIGHT := "res://entities/attackers/infantry/knight.tscn" #melee
+const CROSSBOWMAN := "res://entities/attackers/infantry/crossbowman.tscn"
+const CRUSADER := "res://entities/attackers/ranged/tanks/crusader.tscn" #melee
+#ottoman troops
+const JANISSARY := "res://entities/attackers/shooting/demons/janissary.tscn"
+const AZAB := "res://entities/attackers/infantry/azab.tscn"  #melee
+const SIPAHI := "res://entities/attackers/infantry/sipahi.tscn"  #melee
+const QAPUKULU := "res://entities/attackers/shooting/tanks/qapukulu.tscn"  #melee
+#bulgarian troops
+const BULGARIAN_HEAVY := "res://entities/attackers/shooting/demons/bulgarianheavy.tscn" #melee
+const BULGARIAN_LIGHT := "res://entities/attackers/infantry/bulgarianlight.tscn" #melee
+const BULGARIAN_ARCHER := "res://entities/attackers/infantry/bulgarianarcher.tscn"
+#sassanid troops
+const PAYGAN := "res://entities/attackers/shooting/tanks/paygan.tscn" #melee
+const SASSANID_AARCHER := "res://entities/attackers/shooting/demons/sassaarcher.tscn"
+const CLIBINARII := "res://entities/attackers/infantry/clibinarii.tscn" #melee
+const WAR_ELEPHANT := "res://entities/attackers/infantry/warelephant.tscn" #melee
+#slavic troops
+const SLAV_SPEARMAN := "res://entities/attackers/shooting/tanks/slavspearman.tscn" #melee
+const SLAV_ARCHER := "res://entities/attackers/shooting/demons/slavarcher.tscn"
+
+# Defenders
+const MILITIA := "res://entities/defenders/infantry/militia.tscn" #melee
+const BYZANTINE_INFANTRY := "res://entities/defenders/infantry/byzantineinf.tscn" #melee
+const PARAMONAI := "res://entities/defenders/infantry/paramonai.tscn" #melee
+const VARANGIAN := "res://entities/defenders/infantry/varangianpeasant.tscn" #melee
+const CATAPHRAKTOI := "res://entities/defenders/archer/cataphraktoi.tscn" #melee
+const MILITIA_ARCHER := "res://entities/defenders/cavalry/militiaarcher.tscn"
+const AKRITES := "res://entities/defenders/cavalry/akrites.tscn"
+const VARDARIOTAI := "res://entities/defenders/cavalry/vardariotai.tscn"
+const TZANGATOROS := "res://entities/defenders/cavalry/tzangatoros.tscn"
+const MERCENERY_CROSSBOWMAN := "res://entities/defenders/cavalry/merccrossbow.tscn"
+const LATIN_KNIGHT := "res://entities/defenders/cavalry/latinknight.tscn" #melee
+const BALISTA := "res://entities/defenders/cavalry/balista.tscn"
+const ONAGER := "res://entities/defenders/cavalry/onager.tscn"
+const CANNON := "res://entities/defenders/cavalry/cannon.tscn"
+
 # BUILDINGS
-const TOWER := "res://entities/buildings/tower/tower.tscn"
+const WALL := "res://entities/buildings/tower/tower.tscn"
+const DOMESTIKOS := "res://entities/buildings/tower/domestikos.tscn"
+const LOGOTHETES := "res://entities/buildings/tower/logothetes.tscn"
+const BLACKSMITH := "res://entities/buildings/tower/blacksmith.tscn"
+const TAVERNAE := "res://entities/buildings/tower/tavernae.tscn"
+const FLETCHERS := "res://entities/buildings/tower/fletchers.tscn"
+const ARMOURY := "res://entities/buildings/tower/armoury.tscn"
+const SIEGE_WORKSHOP := "res://entities/buildings/tower/siegeworkshop.tscn"
+const NOSOKOMEION := "res://entities/buildings/tower/nosokomeion.tscn"
+const STONEMASON := "res://entities/buildings/tower/stonemason.tscn"
+const BARRACKS := "res://entities/buildings/tower/barracks.tscn"
+const ARCHERY_RANGE := "res://entities/buildings/tower/archeryrange.tscn" 
+
+# CARDS
+
+
+
+
 # Scenes
 const MAIN_MENU := "res://interfaces/UI/menu/menu.tscn"
 const MAP_TEMPLATE := "res://scenes/maps/map_template.tscn"
 
 
-static func get_zomby_path(zomby_name: String) -> String:
-	var zomby_path: String
-	match zomby_name:
-		"zomby_t1":
-			zomby_path = ZOMBY_T1
-		"zomby_t2":
-			zomby_path = ZOMBY_T2
-		"tank":
-			zomby_path = TANK
-		"demon":
-			zomby_path = DEMON
+static func get_attacker_path(attacker_troop: String) -> String:
+	var attacker_path: String
+	match attacker_troop:
+		"crusader":
+			attacker_path = CRUSADER 
+		"crossbowman":
+			attacker_path = CROSSBOWMAN
+		"knight":
+			attacker_path = KNIGHT
+		"janissary":
+			attacker_path = JANISSARY
+		"azab":
+			attacker_path = AZAB
+		"sipahi":
+			attacker_path = SIPAHI
+		"qapukulu":
+			attacker_path = QAPUKULU
+		"bulgarian heavy":
+			attacker_path = BULGARIAN_HEAVY
+		"bulgarian light":
+			attacker_path = BULGARIAN_LIGHT
+		"bulgarian archer":
+			attacker_path = BULGARIAN_ARCHER
+		"paygan":
+			attacker_path = PAYGAN
+		"sassanid aarcher":
+			attacker_path = SASSANID_AARCHER
+		"clibinarii":
+			attacker_path = CLIBINARII
+		"war elephant":
+			attacker_path = WAR_ELEPHANT
+		"slav spearman":
+			attacker_path = SLAV_SPEARMAN
+		"slav archer":
+			attacker_path = SLAV_ARCHER
 		_:
-			printerr("Cannot get zomby scene from name %s" % zomby_name)
-	return zomby_path
+			printerr("Cannot get attacker scene from name %s" % attacker_troop)
+	return attacker_path
 
 
-static func get_human_path(human_name: String) -> String:
-	var human_path: String
-	match human_name:
-		"knight_t1":
-			human_path = KNIGHT_T1
-		"knight_t2":
-			human_path = KNIGHT_T2	
-		"spearman":
-			human_path = SPEARMAN
-		"peasant":
-			human_path = PEASANT
-		"archer":
-			human_path = ARCHER
-		"cavalry_knight":
-			human_path = CAVALRY_KNIGHT
-		"cavalry_hussar":
-			human_path = CAVALRY_HUSSAR
+static func get_defender_path(defender_name: String) -> String:
+	var defender_path: String
+	match defender_name:
+		"militia":
+			defender_path = MILITIA
+		"byzantine infantry":
+			defender_path = BYZANTINE_INFANTRY	
+		"paramonai":
+			defender_path = PARAMONAI
+		"varangian":
+			defender_path = VARANGIAN
+		"cataphraktoi":
+			defender_path = CATAPHRAKTOI
+		"militia archer":
+			defender_name = MILITIA_ARCHER
+		"akrites":
+			defender_path = AKRITES
+		"vardariotai":
+			defender_path = VARDARIOTAI
+		"tzangatoros":
+			defender_path = TZANGATOROS
+		"mercenery crossbow":
+			defender_path = MERCENERY_CROSSBOWMAN
+		"balista":
+			defender_path = BALISTA
+		"onager":
+			defender_path = ONAGER
+		"cannon":
+			defender_path = CANNON
 		_:
-			printerr("Cannot get human scene from name %s" % human_name)
-	return human_path
+			printerr("Cannot get human scene from name %s" % defender_name)
+	return defender_path
 
 
 static func get_building_path(building_name: String) -> String:
 	var building_path: String
 	match building_name:
 		"tower":
-			building_path = TOWER
+			building_path = WALL
+			building_path = DOMESTIKOS
+			building_path = LOGOTHETES
+			building_path = BLACKSMITH
+			building_path = TAVERNAE
+			building_path = FLETCHERS
+			building_path = ARMOURY
+			building_path = SIEGE_WORKSHOP
+			building_path = NOSOKOMEION
+			building_path = STONEMASON
+			building_path = BARRACKS
+			building_path = ARCHERY_RANGE
 		_:
 			printerr("Cannot get building scene from name %s" % building_name)
 	return building_path
