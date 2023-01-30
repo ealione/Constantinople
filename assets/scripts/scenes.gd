@@ -1,31 +1,37 @@
 extends Node
 # Global helper class used to get information about game scenes.
 
+#########
+# ATTACKERS
+#########
 
-# Enemies
 #crusader troops
 const KNIGHT := "res://entities/attackers/infantry/knight.tscn" #melee
 const CROSSBOWMAN := "res://entities/attackers/infantry/crossbowman.tscn"
 const CRUSADER := "res://entities/attackers/ranged/tanks/crusader.tscn" #melee
-#ottoman troops
+# ottoman troops
 const JANISSARY := "res://entities/attackers/shooting/demons/janissary.tscn"
 const AZAB := "res://entities/attackers/infantry/azab.tscn"  #melee
 const SIPAHI := "res://entities/attackers/infantry/sipahi.tscn"  #melee
 const QAPUKULU := "res://entities/attackers/shooting/tanks/qapukulu.tscn"  #melee
-#bulgarian troops
+# bulgarian troops
 const BULGARIAN_HEAVY := "res://entities/attackers/shooting/demons/bulgarianheavy.tscn" #melee
 const BULGARIAN_LIGHT := "res://entities/attackers/infantry/bulgarianlight.tscn" #melee
 const BULGARIAN_ARCHER := "res://entities/attackers/infantry/bulgarianarcher.tscn"
-#sassanid troops
+# sassanid troops
 const PAYGAN := "res://entities/attackers/shooting/tanks/paygan.tscn" #melee
 const SASSANID_AARCHER := "res://entities/attackers/shooting/demons/sassaarcher.tscn"
 const CLIBINARII := "res://entities/attackers/infantry/clibinarii.tscn" #melee
 const WAR_ELEPHANT := "res://entities/attackers/infantry/warelephant.tscn" #melee
-#slavic troops
+# slavic troops
 const SLAV_SPEARMAN := "res://entities/attackers/shooting/tanks/slavspearman.tscn" #melee
 const SLAV_ARCHER := "res://entities/attackers/shooting/demons/slavarcher.tscn"
 
-# Defenders
+
+###########
+# DEFENDERS
+###########
+
 const MILITIA := "res://entities/defenders/infantry/militia.tscn" #melee
 const BYZANTINE_INFANTRY := "res://entities/defenders/infantry/byzantineinf.tscn" #melee
 const PARAMONAI := "res://entities/defenders/infantry/paramonai.tscn" #melee
@@ -41,7 +47,11 @@ const BALISTA := "res://entities/defenders/cavalry/balista.tscn"
 const ONAGER := "res://entities/defenders/cavalry/onager.tscn"
 const CANNON := "res://entities/defenders/cavalry/cannon.tscn"
 
+
+###########
 # BUILDINGS
+###########
+
 const WALL := "res://entities/buildings/tower/tower.tscn"
 const DOMESTIKOS := "res://entities/buildings/tower/domestikos.tscn"
 const LOGOTHETES := "res://entities/buildings/tower/logothetes.tscn"
@@ -55,15 +65,15 @@ const STONEMASON := "res://entities/buildings/tower/stonemason.tscn"
 const BARRACKS := "res://entities/buildings/tower/barracks.tscn"
 const ARCHERY_RANGE := "res://entities/buildings/tower/archeryrange.tscn" 
 
+#######
 # CARDS
+#######
 
-
-
+# TODO: Define cards here!!!
 
 # Scenes
 const MAIN_MENU := "res://interfaces/UI/menu/menu.tscn"
 const MAP_TEMPLATE := "res://scenes/maps/map_template.tscn"
-
 
 static func get_attacker_path(attacker_troop: String) -> String:
 	var attacker_path: String

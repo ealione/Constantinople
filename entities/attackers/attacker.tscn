@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://c24co3mcwmv4k"]
+[gd_scene load_steps=8 format=3 uid="uid://d1wskeoash8lg"]
 
-[node name="monster" type="Node2D"]
+[ext_resource type="Script" path="res://entities/attackers/attacker.gd" id="1_8p3sc"]
+[ext_resource type="Script" path="res://entities/attackers/attacker_fsm.gd" id="2_vs0kx"]
+[ext_resource type="Script" path="res://entities/attackers/states/move.gd" id="3_fg635"]
+[ext_resource type="Script" path="res://entities/attackers/states/idle.gd" id="4_4ulu7"]
+[ext_resource type="Script" path="res://entities/attackers/states/hit.gd" id="5_44r4q"]
+[ext_resource type="Script" path="res://entities/attackers/states/die.gd" id="6_88xl7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycifu"]
+
+[node name="Attacker" type="CharacterBody2D"]
+script = ExtResource("1_8p3sc")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_vs0kx")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("3_fg635")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_4ulu7")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("5_44r4q")
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource("6_88xl7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ycifu")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="AttackerHUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

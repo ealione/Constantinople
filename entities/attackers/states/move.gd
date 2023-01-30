@@ -1,11 +1,19 @@
-extends Node
+class_name Attacker
+extends CharacterBody2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal target_changed(pos: Vector2)
+signal dead
+
+func enter() -> void:
+	(owner as Attacker).apply_animation("move")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func update(_delta: float) -> void:
+	_move()
+
+
+func _on_navigation_agent_2d_target_reached() -> void:
+	# for debug purposes, switch to "idle" state only when running in the editor
+	if OS.has_feature("editor"):
+		finished.emit("idle")

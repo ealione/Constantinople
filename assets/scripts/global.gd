@@ -2,6 +2,7 @@ extends Node
 
 
 var is_gameover := false
+var solidus: int
 
 
 # Function to wrap an index around an array (circular array)

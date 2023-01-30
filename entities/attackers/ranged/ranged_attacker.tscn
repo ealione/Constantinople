@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bouiljt4ahhrr"]
+
+[node name="ranged_attacker" type="Node2D"]
