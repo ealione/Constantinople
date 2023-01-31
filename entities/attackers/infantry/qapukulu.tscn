@@ -1,3 +1,5 @@
-[gd_scene format=3 uid="uid://pynw56cwrp72"]
+[gd_scene load_steps=2 format=3]
 
-[node name="tank" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d1wskeoash8lg" path="res://entities/attackers/attacker.tscn" id="1_n0jb7"]
+
+[node name="Azab" instance=ExtResource("1_n0jb7")]
