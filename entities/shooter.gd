@@ -1,14 +1,7 @@
 @tool
 class_name Shooter
 extends Node2D
-# Class aggregated by those entities which can shoot, e.g. turrets or tanks.
-# We are using component-based programming principles by leveraging Godot's
-# node system to replace multiple inheritance, which is not supported by
-# the engine. This is called "composition", or "aggregation".
-# This scene supports multiple projectiles per shot: just set the projectile count
-# parameter in the editor and it will spawn the corresponding number of
-# muzzles under the Gun node. Then just tweak their position and projectiles
-# will spawn from there.
+# Class aggregated by those entities which can shoot, e.g. archers.
 
 
 signal has_shot(reload_time: float)
@@ -20,7 +13,7 @@ signal anim_restarted(anim_name: String)  # used to sync animations
 	set = set_detect_radius
 @export var fire_rate: float = 0.5
 @export var rot_speed: float = 5.0
-@export_enum("Normal", "Homing") var shooting_mode: int
+@export_enum("Normal") var shooting_mode: int
 @export_range(1, 6) var projectile_count: int = 1:
 	set = set_projectile_count
 @export var projectile_type: PackedScene
@@ -31,7 +24,6 @@ signal anim_restarted(anim_name: String)  # used to sync animations
 var is_mouse_hovering := false  # used to draw detect radius, set by parent scene
 var targets: Array[Node2D]
 var can_shoot := true
-var muzzle_idx := -1  # used in homing mode, otherwise stays negative
 
 @onready var gun := $Gun as AnimatedSprite2D
 @onready var muzzle_flash := $MuzzleFlash as AnimatedSprite2D
@@ -43,8 +35,6 @@ var muzzle_idx := -1  # used in homing mode, otherwise stays negative
 
 
 func _ready() -> void:
-	if shooting_mode == 1:  # Homing
-		muzzle_idx = 0
 	# initialize detector's shape
 	detector_shape.radius = detect_radius
 	detector_coll.shape = detector_shape
@@ -77,12 +67,6 @@ func shoot() -> void:
 		for _muzzle in gun.get_children():
 			_instance_projectile(_muzzle.global_position)
 		_play_animations("shoot")
-	else:  # Homing
-		var muzzle_pos := (gun.get_child(muzzle_idx) as Marker2D).global_position
-		_instance_projectile(muzzle_pos, targets.front())
-		muzzle_idx = Global.wrap_index(muzzle_idx + 1, projectile_count)
-		muzzle_flash.global_position = muzzle_pos
-		_play_animations("shoot_%s" % ["b" if muzzle_idx == 0 else "a"])
 	# show reload time on HUD
 	firerate_timer.start(fire_rate)
 	has_shot.emit(firerate_timer.wait_time)

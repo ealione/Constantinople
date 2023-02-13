@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://pyudnfjtuvif"]
+[gd_scene load_steps=6 format=3 uid="uid://pyudnfjtuvif"]
 
-[node name="projectile" type="Node2D"]
+[ext_resource type="Script" path="res://entities/projectiles/projectile.gd" id="1_7x30a"]
+[ext_resource type="Texture2D" uid="uid://6qneljn2qhu6" path="res://entities/projectiles/assets/textures/arrow/idle_00.png" id="2_bfunq"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_fboao"]
+frame_0/texture = ExtResource("2_bfunq")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jj113"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqdqs"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[node name="Projectile" type="Area2D"]
+z_index = 30
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_7x30a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AnimatedTexture_fboao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(27, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jj113")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="HitVFX" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(40, 0)
+frames = SubResource("SpriteFrames_jqdqs")
+animation = &"hit"
+
+[node name="LifetimeTimer" type="Timer" parent="."]

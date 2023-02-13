@@ -51,11 +51,11 @@ func start(_position: Vector2, _rotation: float, _speed: int, _damage: int, _tar
 # Each child of this scene will have a different collision mask.
 # Thus we can be sure the right method will be triggered by each instance
 func _on_projectile_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		(body.state_machine as EnemyFSM).is_hit(damage)
+	if body is Attacker:
+		(body.state_machine as AttackerFSM).is_hit(damage)
 		_explode()
-	elif body is Turret:
-		(body as Turret).health -= damage
+	elif body is Defender:
+		(body as Archer).health -= damage
 		_explode()
 
 
