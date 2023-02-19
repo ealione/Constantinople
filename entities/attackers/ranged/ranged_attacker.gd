@@ -1,11 +1,10 @@
-extends Node
+class_name RangedAttacker
+extends Attacker
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var shooter := $Shooter as Shooter
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _on_shooter_has_shot(reload_time: float) -> void:
+#	hud.update_reloadbar(reload_time)
 	pass
