@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1wskeoash8lg"]
+[gd_scene load_steps=9 format=3 uid="uid://d1wskeoash8lg"]
 
 [ext_resource type="Script" path="res://entities/attackers/attacker.gd" id="1_8p3sc"]
 [ext_resource type="Script" path="res://entities/attackers/attacker_fsm.gd" id="2_vs0kx"]
@@ -6,6 +6,29 @@
 [ext_resource type="Script" path="res://entities/attackers/states/idle.gd" id="4_4ulu7"]
 [ext_resource type="Script" path="res://entities/attackers/states/hit.gd" id="5_44r4q"]
 [ext_resource type="Script" path="res://entities/attackers/states/die.gd" id="6_88xl7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8n5u"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycifu"]
 
@@ -28,6 +51,8 @@ script = ExtResource("5_44r4q")
 script = ExtResource("6_88xl7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r8n5u")
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ycifu")

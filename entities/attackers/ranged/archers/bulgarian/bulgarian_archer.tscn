@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn022b8hhpwda"]
+
+[ext_resource type="PackedScene" uid="uid://3h8tavr4w8l8" path="res://entities/attackers/ranged/ranged_attacker.tscn" id="1_studr"]
+[ext_resource type="Script" path="res://entities/attackers/ranged/archers/bulgarian/bulgarianarcher.gd" id="2_mulac"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rekob"]
+radius = 200.0
+
+[node name="Attacker" instance=ExtResource("1_studr")]
+script = ExtResource("2_mulac")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="Shooter/Detector" index="0"]
+shape = SubResource("CircleShape2D_rekob")

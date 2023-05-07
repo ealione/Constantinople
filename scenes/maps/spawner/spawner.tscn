@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5hdtxpam4edk"]
+
+[ext_resource type="Script" path="res://scenes/maps/spawner/marker.gd" id="1_8sk6k"]
+
+[node name="Spawner" type="Node2D"]
+
+[node name="SpanwnsContainer" type="Node2D" parent="."]
+
+[node name="SpawnLocation1" type="Marker2D" parent="SpanwnsContainer"]
+script = ExtResource("1_8sk6k")
+
+[node name="SpawnLocation2" type="Marker2D" parent="SpanwnsContainer"]
+script = ExtResource("1_8sk6k")
+
+[node name="SpawnLocation3" type="Marker2D" parent="SpanwnsContainer"]
+script = ExtResource("1_8sk6k")
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="ProjectileContainer" type="Node" parent="."]
+
+[node name="WaveTimer" type="Timer" parent="."]

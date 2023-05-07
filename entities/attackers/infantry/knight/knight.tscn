@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="PackedScene" uid="uid://d1wskeoash8lg" path="res://entities/attackers/attacker.tscn" id="1_n0jb7"]
-
-[node name="Azab" instance=ExtResource("1_n0jb7")]

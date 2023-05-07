@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://vmm5tue6map5"]
+
+[ext_resource type="PackedScene" uid="uid://ch3oso6ap73up" path="res://interfaces/HUD/hud.tscn" id="1_s323l"]
+
+[node name="Camera2D" type="Camera2D"]
+
+[node name="hud" parent="." instance=ExtResource("1_s323l")]

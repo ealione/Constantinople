@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bouiljt4ahhrr"]
+[gd_scene load_steps=8 format=3 uid="uid://3h8tavr4w8l8"]
 
-[ext_resource type="Script" path="res://entities/attackers/ranged/ranged_attacker.gd" id="1_d6rss"]
-[ext_resource type="Script" path="res://entities/shooter.gd" id="2_860d5"]
+[ext_resource type="PackedScene" uid="uid://d1wskeoash8lg" path="res://entities/attackers/attacker.tscn" id="1_ddmp7"]
+[ext_resource type="Script" path="res://entities/shooter.gd" id="2_3cn4b"]
+[ext_resource type="Script" path="res://entities/attackers/ranged/ranged_attacker.gd" id="2_uktow"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_li32y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wxru"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -36,9 +37,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vphpi"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tredc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkolo"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -51,7 +50,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uyhne"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7ptk"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -64,68 +63,45 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_scc78"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8uu4x"]
+radius = 200.0
 
-[node name="RangedAttacker" type="CharacterBody2D"]
-script = ExtResource("1_d6rss")
-metadata/_edit_group_ = true
+[node name="Attacker" instance=ExtResource("1_ddmp7")]
+script = ExtResource("2_uktow")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="Shoot" type="Node" parent="StateMachine" index="4"]
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Shoot_Still" type="Node" parent="StateMachine" index="5"]
 
-[node name="Idle" type="Node" parent="StateMachine"]
-
-[node name="Hit" type="Node" parent="StateMachine"]
-
-[node name="Die" type="Node" parent="StateMachine"]
-
-[node name="Shoot" type="Node" parent="StateMachine"]
-
-[node name="Shoot_Still" type="Node" parent="StateMachine"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_li32y")
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_3wxru")
 animation = &"shoot_still"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vphpi")
+[node name="Shooter" type="Node2D" parent="." index="5"]
+script = ExtResource("2_3cn4b")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="UI" type="Node2D" parent="."]
-
-[node name="AttackerHUD" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Shooter" type="Node2D" parent="."]
-script = ExtResource("2_860d5")
-
-[node name="Weapon" type="AnimatedSprite2D" parent="Shooter"]
-sprite_frames = SubResource("SpriteFrames_tredc")
+[node name="Weapon" type="AnimatedSprite2D" parent="Shooter" index="0"]
+sprite_frames = SubResource("SpriteFrames_dkolo")
 animation = &"shoot"
 
-[node name="ShootingPoint" type="Marker2D" parent="Shooter/Weapon"]
+[node name="ShootingPoint" type="Marker2D" parent="Shooter/Weapon" index="0"]
 position = Vector2(10, 0)
 
-[node name="ShootingVFX" type="AnimatedSprite2D" parent="Shooter"]
-sprite_frames = SubResource("SpriteFrames_uyhne")
+[node name="ShootingVFX" type="AnimatedSprite2D" parent="Shooter" index="1"]
+sprite_frames = SubResource("SpriteFrames_l7ptk")
 animation = &"shoot"
 
-[node name="Detector" type="Area2D" parent="Shooter"]
+[node name="Detector" type="Area2D" parent="Shooter" index="2"]
 collision_layer = 0
 collision_mask = 18
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooter/Detector"]
-shape = SubResource("CircleShape2D_scc78")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooter/Detector" index="0"]
+shape = SubResource("CircleShape2D_8uu4x")
 
-[node name="LookAhead" type="RayCast2D" parent="Shooter"]
-target_position = Vector2(150, 0)
+[node name="LookAhead" type="RayCast2D" parent="Shooter" index="3"]
+target_position = Vector2(250, 0)
 collision_mask = 18
 
-[node name="FireRateTimer" type="Timer" parent="Shooter"]
+[node name="FireRateTimer" type="Timer" parent="Shooter" index="4"]
 one_shot = true

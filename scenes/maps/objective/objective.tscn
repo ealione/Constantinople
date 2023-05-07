@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bol87gtq3f0lk"]
+
+[ext_resource type="Script" path="res://scenes/maps/objective/objective.gd" id="1_wk5v6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5uxxv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkdw7"]
+
+[node name="Objective" type="Area2D"]
+script = ExtResource("1_wk5v6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5uxxv")
+animation = &"die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hkdw7")
